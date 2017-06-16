@@ -6,13 +6,14 @@ import java.util.TreeSet;
 public class Solution {
 
     static int twinArrays(int[] ar1, int[] ar2) {
-        // Complete this function
+        int n = ar1.length;
         TreeSet<Integer> possibilities = new TreeSet<>();
         possibilities.add(ar1[0] + ar2[0]);
-        for (int i = 0; i < ar1.length; i++) {
-            if (ar1[i] > possibilities.first()) continue;
-            for (int j = 0; j < ar2.length; j++) {
-                if (ar2[j] > possibilities.first()) continue;
+        for (int i = 0; i < n; i++) {
+            if (ar1[i] >= possibilities.first()) continue;
+            for (int j = 0; j < n; j++) {
+                if (i == 0 && j == 0) continue;
+                if (ar2[j] >= possibilities.first()) continue;
                 if (i != j)
                     possibilities.add(ar1[i] + ar2[j]);
             }
